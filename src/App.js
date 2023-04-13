@@ -1,52 +1,21 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import Movie from "./Movie";
+import React from "react";
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./routes/Home.js";
+import About from "./routes/About";
+import Navigation from "./components/Navigation";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-
-  const getMovies = async () => {
-    const {
-      data: {
-        data: { movies },
-      },
-    } = await axios.get(
-      "https://yts.mx/api/v2/list_movies.json?sort_by=rating"
-    );
-    setMovies(movies);
-    setIsLoading(false);
-    // console.log(movies);
-  };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
-
   return (
-    <section className="container">
-      {isLoading ? (
-        <div className="loader">
-          <span className="loader__text">Loading...</span>
-        </div>
-      ) : (
-        <div className="movies">
-          {movies.map((movie) => {
-            return (
-              <Movie
-                key={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-                genres={movie.genres}
-              />
-            );
-          })}
-        </div>
-      )}
-    </section>
+    <div className="App">
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} exact={true} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
