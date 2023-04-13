@@ -46,4 +46,4 @@ export default MyComponent;
 이 예에서는 myProp 소품이 필수 문자열임을 정의합니다. myProp이 제공되지 않거나 문자열이 아닌 다른 것으로 제공되면 콘솔에 경고가 기록됩니다. 이를 통해 개발 프로세스 초기에 버그와 오류를 발견할 수 있습니다.
 
 
-https://wjdpwdn.github.io/
+[https://wjdpwdn.github.io/](https://wjdpwdn.github.io/my-movie-app/)
